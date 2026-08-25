@@ -84,7 +84,7 @@ export default async function VehicleDetailPage({ params }: VehicleDetailPagePro
     <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10">
       <nav className="mb-5 text-sm text-ink/50">
         <Link href="/katalog" className="hover:text-ink">
-          Inventaris
+          Katalog
         </Link>
         <span className="mx-1.5">/</span>
         <span className="text-ink/70">{vehicle.title}</span>

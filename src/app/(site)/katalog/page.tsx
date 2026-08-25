@@ -26,7 +26,7 @@ export default async function InventoryPage({ searchParams }: InventoryPageProps
     <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
       <div className="mb-8">
         <h1 className="font-display text-3xl font-extrabold text-ink sm:text-4xl">
-          Inventaris Mobil Bekas
+          Katalog Mobil Bekas
         </h1>
         <p className="mt-2 text-ink/60">
           {results.length} unit tersedia, siap cek unit dan chat WhatsApp
