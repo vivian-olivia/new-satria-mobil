@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# New Satria Mobil
 
-## Getting Started
+Website showroom mobil bekas New Satria Mobil, Surabaya (Est. 1998). Next.js
+16 (App Router) + TypeScript + Tailwind CSS v4, siap dihubungkan ke Supabase
+untuk data inventori dan dashboard admin.
 
-First, run the development server:
+## Menjalankan secara lokal
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Tanpa konfigurasi tambahan, situs berjalan dengan **data contoh (sample
+data)** di `src/lib/data/vehicles.ts` — 13 unit placeholder lintas kategori,
+lengkap dengan foto placeholder bermerek (bukan foto asli).
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Yang paling sering diedit
 
-## Learn More
+| Yang mau diubah | Berkas |
+|---|---|
+| Nomor WhatsApp, telepon, alamat, jam buka, Instagram | `src/lib/config/site.ts` |
+| Daftar mobil (harga, tahun, spek, dll) | `src/lib/data/vehicles.ts` |
+| Kategori di homepage (SUV, MPV, Hiace, dst.) | `src/lib/data/categories.ts` |
+| Warna, font | `src/app/globals.css` (token `@theme`) |
 
-To learn more about Next.js, take a look at the following resources:
+Setiap perubahan di atas otomatis muncul di seluruh halaman (kartu mobil,
+halaman detail, filter, footer, dsb.) karena semuanya menarik dari sumber
+data yang sama.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Foto kendaraan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Situs ini belum memakai foto asli. Setiap slot foto (kartu mobil, galeri
+detail, hero, kategori, feed Instagram) menampilkan panel placeholder
+bermerek (ikon mobil + warna brand) lewat komponen
+`src/components/ui/ImagePlaceholder.tsx` — supaya tidak menampilkan foto
+generik yang tidak relevan.
 
-## Deploy on Vercel
+Untuk memakai foto asli: ganti isi array `images` pada
+`src/lib/data/vehicles.ts` (atau kolom `images` di Supabase) dengan URL
+foto sungguhan, lalu ganti pemanggilan `<ImagePlaceholder />` di komponen
+terkait (`VehicleCard`, `ImageGallery`, `Hero`, dll.) dengan `next/image`
+seperti biasa.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Menghubungkan Supabase (opsional)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Secara default situs memakai data lokal di atas. Untuk mengelola inventori
+lewat database sungguhan:
+
+1. Buat project di [supabase.com](https://supabase.com).
+2. Jalankan `supabase/schema.sql` di SQL Editor project tersebut.
+3. Salin `.env.example` menjadi `.env.local`, isi `NEXT_PUBLIC_SUPABASE_URL`
+   dan `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+4. Restart `npm run dev`. Situs otomatis membaca dari Supabase; kalau data
+   kosong atau terjadi error, situs otomatis kembali ke data contoh (lihat
+   `src/lib/supabase/queries.ts`).
+
+## Dashboard admin
+
+Setelah Supabase terhubung (langkah di atas), inventori bisa dikelola dari
+`/admin` — tambah, ubah, hapus unit, tanpa perlu buka Supabase dashboard.
+
+1. Buat login admin: Supabase dashboard &rarr; **Authentication &rarr; Users
+   &rarr; Add user** (email + password). Siapa pun yang berhasil login
+   dianggap admin (lihat kebijakan RLS di `supabase/schema.sql`) — jangan
+   bagikan login ke pihak luar.
+2. Buka `/admin/login`, masuk pakai akun tadi.
+3. Kelola unit di `/admin/vehicles` (tambah, ubah, hapus, tandai unggulan).
+
+Tanpa Supabase terkonfigurasi, `/admin` menampilkan pesan setup dan tidak
+bisa dipakai — dashboard ini butuh database sungguhan.
+
+## Struktur halaman
+
+- `/` — Beranda: hero, pencarian cepat, kategori, unit unggulan, layanan, IG
+- `/katalog` — Daftar semua unit + filter (kategori, merek, transmisi, bahan bakar, budget)
+- `/katalog/[slug]` — Detail unit + tombol WhatsApp
+- `/jual-tukar-tambah` — Jual / tukar tambah mobil (form ke WhatsApp)
+- `/kontak` — Kontak, peta, showroom info
+- `/admin` — Dashboard admin (kelola inventori, lihat "Dashboard admin" di atas)
+
+## Deploy
+
+Proyek Next.js standar, bisa dideploy ke Vercel, Netlify, atau platform
+Node lain mana pun. Set environment variable Supabase (jika dipakai) di
+dashboard platform hosting.
