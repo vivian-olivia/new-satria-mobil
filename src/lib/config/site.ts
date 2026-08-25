@@ -4,6 +4,8 @@
  * in the codebase should hardcode these values.
  */
 
+import { formatIDR } from "@/lib/utils/format";
+
 export const siteConfig = {
   name: "New Satria Mobil",
   tagline: "Showroom Mobil Bekas Terpercaya Surabaya",
@@ -71,6 +73,20 @@ export const siteConfig = {
   ],
 } as const;
 
+/**
+ * Shared assumptions behind every "Cicilan mulai Rp X/bln" estimate shown
+ * across cards, the detail page, and the calculator — kept in one place so
+ * the displayed DP%/tenor text always matches what calculateCicilan (see
+ * src/lib/utils/kredit.ts) actually used.
+ */
+export const financingAssumptions = {
+  dpPercent: 30,
+  tenorBulan: 60,
+  tenorLabel: "5 Tahun",
+  insuranceNote: "Asuransi TLO",
+  requiredDocuments: ["KTP", "NPWP", "Bukti Penghasilan", "Surat Domisili"],
+} as const;
+
 export function buildWhatsAppLink(message: string) {
   const encoded = encodeURIComponent(message);
   return `https://wa.me/${siteConfig.whatsapp.number}?text=${encoded}`;
@@ -89,3 +105,25 @@ export const sellTradeInWhatsAppMessage =
 
 export const generalWhatsAppMessage =
   "Halo New Satria Mobil, saya ingin bertanya tentang unit mobil yang tersedia.";
+
+export function articleWhatsAppMessage(title: string) {
+  return `Halo New Satria Mobil, saya baca artikel "${title}" dan ingin tanya lebih lanjut.`;
+}
+
+export function calculatorWhatsAppMessage(params: {
+  harga: number;
+  dpPercent: number;
+  dpAmount: number;
+  tenorBulan: number;
+  cicilanPerBulan: number;
+}) {
+  return [
+    "Halo New Satria Mobil, saya sudah simulasi kredit dengan rincian:",
+    `Harga Mobil: ${formatIDR(params.harga)}`,
+    `DP (${params.dpPercent}%): ${formatIDR(params.dpAmount)}`,
+    `Tenor: ${params.tenorBulan} bulan`,
+    `Estimasi Cicilan: ${formatIDR(params.cicilanPerBulan)}/bulan`,
+    "",
+    "Mohon info unit yang sesuai dan proses kreditnya.",
+  ].join("\n");
+}

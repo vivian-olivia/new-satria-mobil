@@ -3,16 +3,11 @@ import type { Vehicle } from "@/lib/types";
 /**
  * SAMPLE INVENTORY DATA
  * Placeholder listings so the site is fully functional out of the box.
- * The `images` arrays hold placeholder tokens (rendered as on-brand
- * placeholder panels by <ImagePlaceholder>, see
- * src/components/ui/ImagePlaceholder.tsx) rather than real photo URLs.
- * Replace with real photo URLs once connected to Supabase (see
+ * The `images` arrays hold real (Wikimedia Commons) photos of the closest
+ * matching model/generation, standing in for actual dealer photography.
+ * Replace with real unit photos once connected to Supabase (see
  * src/lib/supabase/queries.ts) or by editing this file directly.
  */
-
-function img(seed: string) {
-  return `placeholder:${seed}`;
-}
 
 export const vehicles: Vehicle[] = [
   {
@@ -31,11 +26,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["suv", "fortuner"],
     status: "Tersedia",
     featured: true,
-    images: [img("nsm-fortuner-vrz-2021-1"), img("nsm-fortuner-vrz-2021-2"), img("nsm-fortuner-vrz-2021-3")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/2018_Toyota_Fortuner_2.4_VRZ_4x2_wagon_%28GUN165R%3B_02-18-2019%29%2C_South_Tangerang.jpg/330px-2018_Toyota_Fortuner_2.4_VRZ_4x2_wagon_%28GUN165R%3B_02-18-2019%29%2C_South_Tangerang.jpg",
+    ],
     description:
       "Fortuner VRZ 2.4 AT tangan pertama, servis rutin di bengkel resmi, pajak panjang, kondisi mulus terawat. Interior bersih, ban 90%, siap pakai luar kota.",
     highlights: ["Tangan pertama", "Service record lengkap", "Pajak panjang", "Ban 90%"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "offroad-adventure"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Responsif, tidak ada kebocoran oli." },
+      { area: "Body & Cat", status: "baik", note: "Orisinil, tidak ada tanda bekas tabrakan." },
+      { area: "Ban & Kaki-kaki", status: "baik", note: "Ban 90%, kaki-kaki masih senyap." },
+    ],
   },
   {
     id: "2",
@@ -53,11 +60,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["suv", "fortuner"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-fortuner-trd-2019-1"), img("nsm-fortuner-trd-2019-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/2015_Toyota_Fortuner_%28New_Zealand%29.jpg/330px-2015_Toyota_Fortuner_%28New_Zealand%29.jpg",
+    ],
     description:
       "Fortuner TRD Sportivo, body kit lengkap, mesin sehat, AC dingin. Cocok untuk harian maupun perjalanan jauh keluarga.",
     highlights: ["Body kit TRD", "AC dingin", "Mesin sehat"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "offroad-adventure"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Suara mesin halus, perpindahan gigi mulus." },
+      { area: "Interior & AC", status: "baik", note: "AC dingin merata, jok masih rapi." },
+      { area: "Body & Cat", status: "perlu-perhatian", note: "Ada baret halus di bumper belakang." },
+    ],
   },
   {
     id: "3",
@@ -75,11 +94,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["mpv", "vellfire"],
     status: "Tersedia",
     featured: true,
-    images: [img("nsm-vellfire-zg-2020-1"), img("nsm-vellfire-zg-2020-2"), img("nsm-vellfire-zg-2020-3")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/2018-2023_Toyota_Alphard_X.jpg/330px-2018-2023_Toyota_Alphard_X.jpg",
+    ],
     description:
       "Vellfire ZG full original, jok captain seat elektrik, kondisi seperti baru. Perawatan penuh di dealer resmi, sangat terawat.",
     highlights: ["Captain seat elektrik", "Full original", "Km rendah"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Interior", status: "baik", note: "Captain seat elektrik berfungsi normal, kulit jok mulus." },
+      { area: "Mesin & Transmisi", status: "baik", note: "Halus, tidak ada getaran berlebih." },
+      { area: "Ban & Kaki-kaki", status: "baik", note: "Km rendah, kaki-kaki masih empuk." },
+    ],
   },
   {
     id: "4",
@@ -97,11 +128,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["mpv", "innova"],
     status: "Tersedia",
     featured: true,
-    images: [img("nsm-innova-venturer-2020-1"), img("nsm-innova-venturer-2020-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Toyota_Innova_Zenix_2.0_V_%28III%29_%E2%80%93_f_22032025.jpg/330px-Toyota_Innova_Zenix_2.0_V_%28III%29_%E2%80%93_f_22032025.jpg",
+    ],
     description:
       "Innova Venturer diesel matic, tenaga responsif, kabin senyap. Unit istimewa, jarang pakai, dokumen lengkap.",
     highlights: ["Diesel matic", "Dokumen lengkap", "Unit istimewa"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "harian-kantor"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Tenaga responsif, kabin senyap." },
+      { area: "Body & Cat", status: "baik", note: "Cat orisinil, tidak ada dempul." },
+      { area: "Dokumen", status: "baik", note: "STNK, BPKB, dan faktur lengkap." },
+    ],
   },
   {
     id: "5",
@@ -119,11 +162,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["mpv", "innova"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-innova-g-2018-1"), img("nsm-innova-g-2018-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Toyota_Innova_Zenix_2.0_V_%28III%29_%E2%80%93_f_22032025.jpg/330px-Toyota_Innova_Zenix_2.0_V_%28III%29_%E2%80%93_f_22032025.jpg",
+    ],
     description:
       "Innova diesel manual, irit dan bandel, cocok untuk armada keluarga maupun usaha. Kaki-kaki baru diservis.",
     highlights: ["Kaki-kaki baru", "Irit BBM", "Siap pakai"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "niaga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Ban & Kaki-kaki", status: "baik", note: "Baru diservis, siap jarak jauh." },
+      { area: "Mesin & Transmisi", status: "baik", note: "Irit dan bandel, tidak ada rembes oli." },
+      { area: "Body & Cat", status: "perlu-perhatian", note: "Ada baret ringan di pintu kiri belakang." },
+    ],
   },
   {
     id: "6",
@@ -141,11 +196,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["mpv"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-avanza-veloz-2021-1"), img("nsm-avanza-veloz-2021-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/2022_Toyota_Avanza_1.5_G_Toyota_Safety_Sense_W101RE_%2820220403%29.jpg/330px-2022_Toyota_Avanza_1.5_G_Toyota_Safety_Sense_W101RE_%2820220403%29.jpg",
+    ],
     description:
       "Avanza Veloz matic, unit rapi, cat orisinil, interior wangi bebas rokok. Pas untuk keluarga muda.",
     highlights: ["Cat orisinil", "Bebas rokok", "Interior rapi"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "harian-kantor"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Body & Cat", status: "baik", note: "Cat orisinil, tidak ada tanda tabrakan." },
+      { area: "Interior", status: "baik", note: "Bebas rokok, jok dan karpet bersih." },
+      { area: "Mesin & Transmisi", status: "baik", note: "Halus, matic responsif." },
+    ],
   },
   {
     id: "7",
@@ -163,11 +230,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["hiace"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-hiace-commuter-2019-1"), img("nsm-hiace-commuter-2019-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/330px-2020_Toyota_HiAce_%28front%29.jpg",
+    ],
     description:
       "Hiace Commuter 15 seat, cocok untuk travel dan armada antar jemput. Mesin diesel bandel, rangka mulus.",
     highlights: ["15 seat", "Cocok armada travel", "Rangka mulus"],
     location: "Showroom Surabaya",
+    seats: 15,
+    useCaseTags: ["niaga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Diesel bandel, tidak ada asap berlebih." },
+      { area: "Rangka & Kaki-kaki", status: "baik", note: "Rangka mulus, tidak ada bekas las." },
+      { area: "Interior", status: "perlu-perhatian", note: "Jok baris belakang ada bekas pemakaian." },
+    ],
   },
   {
     id: "8",
@@ -185,11 +264,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["hiace"],
     status: "Tersedia",
     featured: true,
-    images: [img("nsm-hiace-premio-2020-1"), img("nsm-hiace-premio-2020-2"), img("nsm-hiace-premio-2020-3")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/2020_Toyota_HiAce_%28front%29.jpg/330px-2020_Toyota_HiAce_%28front%29.jpg",
+    ],
     description:
       "Hiace Premio matic, kabin mewah captain seat, sangat nyaman untuk perjalanan jauh dan sewa VIP.",
     highlights: ["Captain seat", "Kabin mewah", "Nyaman jarak jauh"],
     location: "Showroom Surabaya",
+    seats: 14,
+    useCaseTags: ["niaga", "keluarga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Interior", status: "baik", note: "Captain seat mewah, kabin masih wangi." },
+      { area: "Mesin & Transmisi", status: "baik", note: "Matic halus, tenaga besar untuk jarak jauh." },
+      { area: "Body & Cat", status: "baik", note: "Cat mulus, tidak ada baret." },
+    ],
   },
   {
     id: "9",
@@ -207,11 +298,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["double-cabin", "suv"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-hilux-rocco-2021-1"), img("nsm-hilux-rocco-2021-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/2016_Toyota_HiLux_Invincible_D-4D_4WD_2.4_Front.jpg/330px-2016_Toyota_HiLux_Invincible_D-4D_4WD_2.4_Front.jpg",
+    ],
     description:
       "Hilux Rocco 4x4 matic, tangguh untuk medan berat maupun kebutuhan usaha. Bak masih orisinil, mesin prima.",
     highlights: ["4x4", "Bak orisinil", "Mesin prima"],
     location: "Showroom Surabaya",
+    seats: 5,
+    useCaseTags: ["offroad-adventure", "niaga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "4x4 berfungsi normal, mesin prima." },
+      { area: "Bak & Rangka", status: "baik", note: "Bak masih orisinil, tidak ada modifikasi." },
+      { area: "Ban & Kaki-kaki", status: "baik", note: "Ban tebal, siap medan berat." },
+    ],
   },
   {
     id: "10",
@@ -229,11 +332,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["double-cabin"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-triton-exceed-2019-1"), img("nsm-triton-exceed-2019-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Mitsubishi_Triton_LC_2.4_GLS_2WD_Blade_Silver_Metallic_%28cropped%29.jpg/330px-Mitsubishi_Triton_LC_2.4_GLS_2WD_Blade_Silver_Metallic_%28cropped%29.jpg",
+    ],
     description:
       "Triton Exceed 4x4 manual, siap kerja berat, ban tebal, kondisi mesin dan transmisi sehat.",
     highlights: ["4x4", "Ban tebal", "Siap kerja berat"],
     location: "Showroom Surabaya",
+    seats: 5,
+    useCaseTags: ["niaga", "offroad-adventure"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "4x4 manual sehat, siap kerja berat." },
+      { area: "Ban & Kaki-kaki", status: "baik", note: "Ban tebal, kaki-kaki kokoh." },
+      { area: "Body & Cat", status: "perlu-perhatian", note: "Ada bekas gesekan ringan di bak." },
+    ],
   },
   {
     id: "11",
@@ -251,11 +366,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["truck"],
     status: "Tersedia",
     featured: false,
-    images: [img("nsm-colt-diesel-2018-1"), img("nsm-colt-diesel-2018-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Fuso_Canter_3C13%2C_8th_Generation.jpg/330px-Fuso_Canter_3C13%2C_8th_Generation.jpg",
+    ],
     description:
       "Colt Diesel Engkel siap angkut, bak besi kondisi baik, mesin bertenaga untuk kebutuhan logistik harian.",
     highlights: ["Bak besi", "Siap angkut", "Mesin bertenaga"],
     location: "Showroom Surabaya",
+    seats: 3,
+    useCaseTags: ["niaga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Bertenaga, siap kerja harian." },
+      { area: "Bak", status: "baik", note: "Bak besi kondisi baik, tidak keropos." },
+      { area: "Ban & Kaki-kaki", status: "perlu-perhatian", note: "Ban depan sisa 60%, disarankan ganti." },
+    ],
   },
   {
     id: "12",
@@ -273,11 +400,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["suv"],
     status: "Tersedia",
     featured: true,
-    images: [img("nsm-pajero-dakar-2020-1"), img("nsm-pajero-dakar-2020-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Mitsubishi_Pajero_Sport_%283rd_generation%29_1X7A0409.jpg/330px-Mitsubishi_Pajero_Sport_%283rd_generation%29_1X7A0409.jpg",
+    ],
     description:
       "Pajero Sport Dakar matic, fitur lengkap, tampilan gagah, perawatan rutin di bengkel resmi.",
     highlights: ["Fitur lengkap", "Perawatan resmi", "Tampilan gagah"],
     location: "Showroom Surabaya",
+    seats: 7,
+    useCaseTags: ["keluarga", "offroad-adventure"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Mesin & Transmisi", status: "baik", note: "Perawatan rutin di bengkel resmi." },
+      { area: "Fitur & Interior", status: "baik", note: "Semua fitur berfungsi normal." },
+      { area: "Body & Cat", status: "baik", note: "Tampilan gagah, cat masih orisinil." },
+    ],
   },
   {
     id: "13",
@@ -295,11 +434,23 @@ export const vehicles: Vehicle[] = [
     categoryTags: ["suv"],
     status: "Booking",
     featured: false,
-    images: [img("nsm-crv-turbo-2019-1"), img("nsm-crv-turbo-2019-2")],
+    images: [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Honda_CR-V_e-HEV_Elegance_AWD_%28VI%29_%E2%80%93_f_14072024.jpg/330px-Honda_CR-V_e-HEV_Elegance_AWD_%28VI%29_%E2%80%93_f_14072024.jpg",
+    ],
     description:
       "CR-V Turbo Prestige, sunroof, jok kulit, tampilan sporty. Unit sedang proses booking, hubungi untuk waiting list.",
     highlights: ["Sunroof", "Jok kulit", "Sporty"],
     location: "Showroom Surabaya",
+    seats: 5,
+    useCaseTags: ["harian-kantor", "keluarga"],
+    videoUrl: null,
+    tiktokUrl: null,
+    instagramUrl: null,
+    conditionPoints: [
+      { area: "Interior", status: "baik", note: "Jok kulit mulus, sunroof berfungsi normal." },
+      { area: "Mesin & Transmisi", status: "baik", note: "Turbo responsif, tidak ada gejala overheat." },
+      { area: "Body & Cat", status: "baik", note: "Tampilan sporty, cat masih kinclong." },
+    ],
   },
 ];
 

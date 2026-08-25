@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
 import { cn } from "@/lib/utils/format";
 
@@ -10,14 +11,26 @@ export function ImageGallery({ images, alt }: { images: string[]; alt: string })
   return (
     <div>
       <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-paper-dim sm:aspect-[16/10]">
-        <ImagePlaceholder seed={`${alt}-${active}`} label={alt} iconSize={56} />
+        {images[active] ? (
+          <Image
+            src={images[active]}
+            alt={alt}
+            fill
+            unoptimized
+            sizes="(min-width: 640px) 60vw, 100vw"
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <ImagePlaceholder seed={`${alt}-${active}`} label={alt} iconSize={56} />
+        )}
       </div>
 
       {images.length > 1 && (
         <div className="mt-3 flex gap-2 overflow-x-auto">
           {images.map((src, i) => (
             <button
-              key={src}
+              key={i}
               type="button"
               onClick={() => setActive(i)}
               aria-label={`Lihat foto ${i + 1}`}
@@ -26,7 +39,7 @@ export function ImageGallery({ images, alt }: { images: string[]; alt: string })
                 active === i ? "border-brand-red" : "border-transparent"
               )}
             >
-              <ImagePlaceholder seed={`${alt}-${i}`} label="" iconSize={20} />
+              <Image src={src} alt="" fill unoptimized sizes="80px" className="object-cover" />
             </button>
           ))}
         </div>

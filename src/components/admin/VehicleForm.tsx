@@ -3,6 +3,7 @@
 import { useActionState, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { categories } from "@/lib/data/categories";
+import { useCases } from "@/lib/data/use-cases";
 import { Select } from "@/components/ui/Select";
 import type { Vehicle } from "@/lib/types";
 import type { VehicleFormState } from "@/lib/actions/vehicles";
@@ -146,6 +147,13 @@ export function VehicleForm({ action, vehicle }: VehicleFormProps) {
           defaultValue={vehicle?.location}
           placeholder="Showroom Surabaya"
         />
+        <Field
+          label="Jumlah Kursi"
+          name="seats"
+          type="number"
+          defaultValue={vehicle?.seats ?? 5}
+          required
+        />
       </section>
 
       <section className="grid gap-4 rounded-2xl border border-ink/10 bg-white p-5 sm:grid-cols-3 sm:p-6">
@@ -207,6 +215,27 @@ export function VehicleForm({ action, vehicle }: VehicleFormProps) {
         </label>
       </section>
 
+      <section className="rounded-2xl border border-ink/10 bg-white p-5 sm:p-6">
+        <label className="text-xs font-semibold text-ink/60">Gaya Hidup / Use Case</label>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {useCases.map((uc) => (
+            <label
+              key={uc.slug}
+              className="flex cursor-pointer items-center gap-2 rounded-full border border-ink/12 px-3 py-1.5 text-sm text-ink/70 transition-colors has-[:checked]:border-brand-red has-[:checked]:bg-brand-red-soft has-[:checked]:text-brand-red"
+            >
+              <input
+                type="checkbox"
+                name="useCaseTags"
+                value={uc.slug}
+                defaultChecked={vehicle?.useCaseTags.includes(uc.slug)}
+                className="sr-only"
+              />
+              {uc.label}
+            </label>
+          ))}
+        </div>
+      </section>
+
       <section className="space-y-4 rounded-2xl border border-ink/10 bg-white p-5 sm:p-6">
         <TextAreaField
           label="Deskripsi"
@@ -227,6 +256,39 @@ export function VehicleForm({ action, vehicle }: VehicleFormProps) {
           defaultValue={vehicle?.images.join("\n")}
           rows={4}
           hint="Satu URL foto per baris. Kosongkan untuk pakai placeholder."
+        />
+        <TextAreaField
+          label="Kondisi Kendaraan"
+          name="conditionPoints"
+          defaultValue={vehicle?.conditionPoints
+            .map((p) => `${p.area} | ${p.status} | ${p.note}`)
+            .join("\n")}
+          rows={4}
+          hint='Satu poin per baris, format: "Area | baik atau perlu-perhatian | Catatan". Contoh: Mesin & Transmisi | baik | Halus, tidak ada rembes oli.'
+        />
+      </section>
+
+      <section className="grid gap-4 rounded-2xl border border-ink/10 bg-white p-5 sm:grid-cols-3 sm:p-6">
+        <Field
+          label="URL Video YouTube (opsional)"
+          name="videoUrl"
+          type="url"
+          defaultValue={vehicle?.videoUrl ?? undefined}
+          placeholder="https://youtu.be/..."
+        />
+        <Field
+          label="URL Video TikTok (opsional)"
+          name="tiktokUrl"
+          type="url"
+          defaultValue={vehicle?.tiktokUrl ?? undefined}
+          placeholder="https://www.tiktok.com/..."
+        />
+        <Field
+          label="URL Post Instagram (opsional)"
+          name="instagramUrl"
+          type="url"
+          defaultValue={vehicle?.instagramUrl ?? undefined}
+          placeholder="https://www.instagram.com/..."
         />
       </section>
 

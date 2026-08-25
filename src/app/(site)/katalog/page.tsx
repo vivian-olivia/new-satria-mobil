@@ -7,7 +7,7 @@ import { getAllVehicles } from "@/lib/supabase/queries";
 import { parseFilters, applyFilters } from "@/lib/utils/filter-vehicles";
 
 export const metadata: Metadata = {
-  title: "Inventaris Mobil Bekas",
+  title: "Katalog Mobil Bekas",
   description:
     "Jelajahi seluruh unit mobil dan truk bekas berkualitas di New Satria Mobil Surabaya, lengkap dengan harga, tahun, kilometer, dan spesifikasi.",
 };

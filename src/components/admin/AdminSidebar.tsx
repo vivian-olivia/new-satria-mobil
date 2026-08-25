@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { SquaresFour, Car, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
+import { SquaresFour, Car, Newspaper, Quotes, ArrowSquareOut } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/lib/utils/format";
 
 const links = [
   { href: "/admin", label: "Dashboard", icon: SquaresFour, exact: true },
   { href: "/admin/vehicles", label: "Kendaraan", icon: Car, exact: false },
+  { href: "/admin/articles", label: "Tips & Artikel", icon: Newspaper, exact: false },
+  { href: "/admin/testimonials", label: "Testimoni", icon: Quotes, exact: false },
 ];
 
 export function AdminSidebar() {

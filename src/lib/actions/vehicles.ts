@@ -14,6 +14,20 @@ function linesToArray(raw: FormDataEntryValue | null) {
     .filter(Boolean);
 }
 
+const CONDITION_STATUSES = ["baik", "perlu-perhatian"] as const;
+
+// Parses the "Area | Status | Catatan" per-line textarea into structured
+// condition-checklist entries; unrecognized status text defaults to "baik".
+function linesToConditionPoints(raw: FormDataEntryValue | null) {
+  return linesToArray(raw).map((line) => {
+    const [area = "", statusRaw = "", note = ""] = line.split("|").map((s) => s.trim());
+    const status = CONDITION_STATUSES.includes(statusRaw as (typeof CONDITION_STATUSES)[number])
+      ? (statusRaw as (typeof CONDITION_STATUSES)[number])
+      : "baik";
+    return { area, status, note };
+  });
+}
+
 function parseVehiclePayload(formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const brand = String(formData.get("brand") ?? "").trim();
@@ -33,6 +47,12 @@ function parseVehiclePayload(formData: FormData) {
   const highlights = linesToArray(formData.get("highlights"));
   const location = String(formData.get("location") ?? "").trim() || "Showroom Surabaya";
   const slugInput = String(formData.get("slug") ?? "").trim();
+  const seats = Number(formData.get("seats") ?? 5);
+  const useCaseTags = formData.getAll("useCaseTags").map(String);
+  const videoUrl = String(formData.get("videoUrl") ?? "").trim() || null;
+  const tiktokUrl = String(formData.get("tiktokUrl") ?? "").trim() || null;
+  const instagramUrl = String(formData.get("instagramUrl") ?? "").trim() || null;
+  const conditionPoints = linesToConditionPoints(formData.get("conditionPoints"));
 
   if (
     !title ||
@@ -76,6 +96,12 @@ function parseVehiclePayload(formData: FormData) {
       description,
       highlights,
       location,
+      seats: Number.isFinite(seats) && seats > 0 ? seats : 5,
+      use_case_tags: useCaseTags,
+      video_url: videoUrl,
+      tiktok_url: tiktokUrl,
+      instagram_url: instagramUrl,
+      condition_points: conditionPoints,
     },
   } as const;
 }

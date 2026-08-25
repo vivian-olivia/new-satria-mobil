@@ -10,7 +10,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-ink pb-16 sm:pb-20">
+    <section className="relative overflow-hidden bg-paper py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -28,9 +28,8 @@ export function CTASection() {
             <h2 className="font-display text-2xl font-extrabold leading-tight text-white sm:text-4xl">
               Siap Dapatkan Mobil Impian Anda?
             </h2>
-            <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base">
-              Tim kami siap membantu Anda menemukan unit yang tepat, hari ini
-              juga.
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-relaxed text-white/75 sm:text-base lg:max-w-none lg:whitespace-nowrap">
+              Tim kami siap membantu Anda menemukan unit yang tepat, hari ini juga.
             </p>
 
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">

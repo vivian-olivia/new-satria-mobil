@@ -8,7 +8,7 @@ import {
 import type { Vehicle } from "@/lib/types";
 import { formatIDR, formatKm } from "@/lib/utils/format";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { ImagePlaceholder } from "@/components/ui/ImagePlaceholder";
+import { CardImageCarousel } from "@/components/inventory/CardImageCarousel";
 import { vehicleWhatsAppMessage } from "@/lib/config/site";
 
 const statusStyles: Record<Vehicle["status"], string> = {
@@ -26,11 +26,7 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
         href={`/katalog/${vehicle.slug}`}
         className="relative block aspect-[4/3] w-full overflow-hidden bg-paper-dim"
       >
-        <ImagePlaceholder
-          seed={vehicle.id}
-          label={vehicle.model}
-          className="transition-transform duration-500 group-hover:scale-105"
-        />
+        <CardImageCarousel images={vehicle.images} alt={vehicle.title} seed={vehicle.id} />
         <span
           className={`absolute left-3 top-3 rounded-full px-2.5 py-1 text-xs font-bold ${statusStyles[vehicle.status]}`}
         >
@@ -48,7 +44,7 @@ export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {
           </h3>
         </Link>
 
-        <p className="mt-1.5 font-display text-xl font-extrabold text-brand-red">
+        <p className="mt-1.5 font-display text-xl font-extrabold text-ink">
           {formatIDR(vehicle.price)}
         </p>
 

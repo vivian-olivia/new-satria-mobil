@@ -4,33 +4,13 @@ import { PageHero } from "@/components/layout/PageHero";
 import { SellForm } from "@/components/sell/SellForm";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { sellTradeInWhatsAppMessage } from "@/lib/config/site";
+import { sellSteps as steps } from "@/lib/data/how-to-steps";
 
 export const metadata: Metadata = {
   title: "Jual & Tukar Tambah Mobil / Truk",
   description:
     "Jual mobil atau truk bekas Anda atau tukar tambah dengan unit di showroom New Satria Mobil Surabaya. Penawaran cepat, harga wajar, proses transparan.",
 };
-
-const steps = [
-  {
-    index: "01",
-    title: "Kirim data mobil",
-    description:
-      "Isi formulir singkat atau kirim foto dan detail mobil Anda langsung via WhatsApp.",
-  },
-  {
-    index: "02",
-    title: "Cek unit & penawaran",
-    description:
-      "Tim kami mengecek kondisi mobil dan memberikan penawaran harga terbaik hari itu juga.",
-  },
-  {
-    index: "03",
-    title: "Deal, bayar langsung cair",
-    description:
-      "Setuju harga, tanda tangan dokumen, dan dana langsung cair atau unit tukar tambah siap dibawa pulang.",
-  },
-];
 
 const benefits = [
   "Penawaran harga wajar sesuai kondisi pasar terkini",
