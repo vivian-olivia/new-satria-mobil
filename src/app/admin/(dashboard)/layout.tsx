@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { Logo } from "@/components/layout/Logo";
 import { AdminSidebar } from "@/components/admin/AdminSidebar";
+import { AdminMobileHeader } from "@/components/admin/AdminMobileHeader";
 import { LogoutButton } from "@/components/admin/LogoutButton";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
@@ -37,8 +38,10 @@ export default async function AdminDashboardLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-paper-dim">
-      <aside className="flex w-64 shrink-0 flex-col justify-between bg-ink p-4">
+    <div className="flex min-h-screen flex-col bg-paper-dim lg:flex-row">
+      <AdminMobileHeader userEmail={user.email ?? ""} />
+
+      <aside className="hidden w-64 shrink-0 flex-col justify-between bg-ink p-4 lg:sticky lg:top-0 lg:flex lg:h-screen">
         <div>
           <div className="px-2 py-3">
             <Logo dark />
@@ -54,7 +57,7 @@ export default async function AdminDashboardLayout({
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 p-6 sm:p-8">{children}</main>
+      <main className="min-w-0 flex-1 p-4 sm:p-6 lg:p-8">{children}</main>
     </div>
   );
 }

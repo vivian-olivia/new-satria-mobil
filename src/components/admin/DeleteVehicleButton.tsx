@@ -16,7 +16,7 @@ export function DeleteVehicleButton({ id, title }: { id: string; title: string }
       <button
         type="submit"
         aria-label={`Hapus ${title}`}
-        className="flex h-9 w-9 items-center justify-center rounded-lg text-ink/40 transition-colors hover:bg-brand-red-soft hover:text-brand-red"
+        className="flex h-10 w-10 items-center justify-center rounded-lg text-ink/40 transition-colors hover:bg-brand-red-soft hover:text-brand-red"
       >
         <Trash size={16} />
       </button>
