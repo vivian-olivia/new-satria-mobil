@@ -61,7 +61,7 @@ export function Hero() {
       <div className="relative flex min-h-[calc(100dvh-4rem)] flex-col">
         <div className="absolute inset-0">
           <Image
-            src="/hero.png"
+            src="/hero.jpg"
             alt="Showroom New Satria Mobil"
             fill
             priority
