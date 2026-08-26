@@ -15,13 +15,13 @@ export const siteConfig = {
 
   whatsapp: {
     // Digits only, international format, no leading +
-    number: "6285109998812",
-    displayNumber: "+62 851-0999-8812",
+    number: "6285100998812",
+    displayNumber: "+62 851-0099-8812",
   },
 
   phone: {
-    displayNumber: "+62 851-0999-8812",
-    telHref: "tel:+6285109998812",
+    displayNumber: "+62 851-0099-8812",
+    telHref: "tel:+6285100998812",
   },
 
   email: "info@newsatriamobil.id",
