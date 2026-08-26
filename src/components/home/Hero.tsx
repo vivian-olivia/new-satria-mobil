@@ -59,14 +59,14 @@ export function Hero() {
   return (
     <section className="texture-grain relative overflow-hidden bg-ink text-white">
       <div className="relative flex min-h-[calc(100dvh-4rem)] flex-col">
-        <div className="absolute inset-0">
+        <div className="absolute -inset-x-[18%] inset-y-0 overflow-hidden sm:-inset-x-[10%]">
           <Image
-            src="/hero.jpg"
+            src="/hero-2.jpg"
             alt="Showroom New Satria Mobil"
             fill
             priority
-            sizes="100vw"
-            className="object-cover"
+            sizes="130vw"
+            className="translate-x-[5%] object-cover object-[50%_25%]"
           />
         </div>
 
@@ -75,15 +75,15 @@ export function Hero() {
             base regardless of what's behind it in the photo. */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-ink/55"
+          className="pointer-events-none absolute inset-0 bg-ink/35"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,14,20,0.95)_0%,rgba(11,14,20,0.75)_28%,rgba(11,14,20,0.25)_58%,rgba(11,14,20,0.15)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,rgba(11,14,20,0.8)_0%,rgba(11,14,20,0.6)_32%,rgba(11,14,20,0.2)_62%,rgba(11,14,20,0.1)_100%)]"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(11,14,20,0.35)_0%,rgba(11,14,20,0)_18%,rgba(11,14,20,0.2)_65%,rgba(11,14,20,0.95)_100%)]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(11,14,20,0.2)_0%,rgba(11,14,20,0)_18%,rgba(11,14,20,0.1)_65%,rgba(11,14,20,0.8)_100%)]"
         />
 
         <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col justify-center px-4 py-14 sm:px-6 sm:py-20">
